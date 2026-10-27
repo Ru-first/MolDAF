@@ -1,6 +1,6 @@
 # MolDAF: Multimodal Molecular Property Prediction
 
-MolDAF integrates molecular graphs, MACCS/ErG/PubChem fingerprints, and optional MoLFormer embeddings using cross-modal attention, contrastive learning, and molecular-relation consistency learning.
+MolDAF integrates molecular graphs, MACCS/ErG/PubChem fingerprints, and MoLFormer embeddings using cross-modal attention, contrastive learning, and molecular-relation consistency learning.
 
 ## Project Structure
 
@@ -39,7 +39,7 @@ conda activate mola_code
 python prepare_molformer_embeddings.py
 ```
 
-**MoleculeNet experiments** (from the main code directory):
+**MoleculeNet experiments**:
 
 ```bash
 python main_Cla.py
@@ -51,12 +51,9 @@ Classification: BACE, BBBP, ClinTox, SIDER, Tox21, MUV. Regression: Delaney, Fre
 
 **FS-mol experiments** (from `FS-mol/`):
 
-The FS dataset is stored in `MolDAF-main/MolDAF-main/FS-mol/raw/` (relative to the outer project directory). The FS dataset files include `CHEMBL829401.csv`, `CHEMBL1614450.csv`, `CHEMBL1738078.csv`, `CHEMBL3215081.csv`, and `CHEMBL3888461.csv`. Each CSV requires `smiles` and `labels` columns.
+The FS dataset is stored in `MolDAF-main/MolDAF-main/FS-mol/raw/`. The FS dataset files include `CHEMBL829401.csv`, `CHEMBL1614450.csv`, `CHEMBL1738078.csv`, `CHEMBL3215081.csv`, and `CHEMBL3888461.csv`. Each CSV requires `smiles` and `labels` columns.
 
 ```bash
 cd FS-mol
 python main_Cla.py 
 ```
-**Metrics:** ROC-AUC / PR-AUC (classification), RMSE (standard regression), MAE (QM regression).
-
-**FS-mol code note:** In the uploaded `FS-mol/main_Cla.py`, replace `model = MoLA(` with `model = MolDAF(` to match its imported class.
